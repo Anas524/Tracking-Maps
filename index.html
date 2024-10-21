@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Tracking Maps</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <div class="font-arabic">
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top z-5 font-arabic">
+            <div class="container">
+                <div class="d-flex flex-column align-items-start">
+                    <div class="navbar-brand pl-4 d-flex align-items-center">
+                        <img src="img/logo-removebg-preview.png" alt="Logo">
+                        <div class="ml-2">
+                            <span style="color: black; font-weight: 700;" class="font-english">TRACKING </span>
+                            <span style="color: #c92626; font-weight: 700;" class="font-english">MAPS</span>
+                            <br>
+                            <span class="mt-1 d-block">شركة خرائط التتبع لتقنية المعلومات</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pr-3 pl-3">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        
+            <div class="collapse navbar-collapse font-arabic" id="navbarContent">
+                <ul class="navbar-nav ml-auto pr-3" id="navItem">
+                    <li class="ml-3">
+                        <a class="nav-link" href="#" data-lang-ar="الرئيسية" data-lang-en="Home"  id="home">الرئيسية</a>
+                    </li>
+                    <li class="ml-3">
+                        <a class="nav-link" href="#" data-lang-ar="معلومات عنا" data-lang-en="About" id="aboutUs">معلومات عنا</a>
+                    </li>
+                    <li class="ml-3">
+                        <a class="nav-link" href="#" data-lang-ar="خدمات" data-lang-en="Services" id="services">خدمات</a>
+                    </li>
+                    <li class="ml-3">
+                        <a class="nav-link" href="#" data-lang-ar="اتصل بنا" data-lang-en="Contact" id="contactUs">اتصل بنا</a>
+                    </li>
+                    <li class="nav-item dropdown ml-3">
+                        <a class="nav-link dropdown-toggle justify-content-start align-items-center pl-0" href="#" id="navbarDropdown" 
+                           role="button" data-bs-toggle="dropdown" aria-expanded="false" data-lang-ar="روابط الخادم" data-lang-en="Server Links">
+                           روابط الخادم
+                        </a>
+                        <ul class="dropdown-menu mr-3" aria-labelledby="navbarDropdown" id="dropdownMenu">
+                            <li><a class="dropdown-item" id="dropdownItem" href="http://tracmap1.com/" data-lang-ar="الخادم 1" data-lang-en="Server 1">الخادم 1</a></li>
+                            <li><a class="dropdown-item" id="dropdownItem" href="http://tracmap2.com/" data-lang-ar="لخادم 2" data-lang-en="Server 2">لخادم 2</a></li>
+                            <li><a class="dropdown-item" id="dropdownItem" href="http://tracmap3.com/" data-lang-ar="3 لخادم" data-lang-en="Server 3">3 لخادم</a></li>
+                            <li><a class="dropdown-item" id="dropdownItem" href="https://avlapps.com/" data-lang-ar="الخادم 4" data-lang-en="Server 4">الخادم 4</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="ml-3">
+                        <a class="btn-toggle-lang nav-link font-english pl-0 pr-0" id="toggleLang">English</a> 
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+        <div id="sec-0">
+            <div class="main-content font-arabic">
+                <div>
+                    <h1 data-lang-ar="الطريقة الأسرع والأسهل لتتبع مركباتك" data-lang-en="The fastest and easiest way to track your vehicles.">الطريقة الأسرع والأسهل لتتبع مركباتك</h1>
+                    <p data-lang-ar="كن دائماً على اطلاع على حالة مركباتك" data-lang-en="Always be up to date with the condition of your vehicles">كن دائماً على اطلاع على حالة مركباتك</p>
+                    <p data-lang-ar="يُتيح نظامنا العديد من التقارير عن إدارة المركبات مثل إدارة الموقع الجغرافي وبيان الرحلات وإستهلاك الوقود والعديد من المزيا" data-lang-en="Our system allows many vehicle management reports such as location management, trip statement, fuel consumption and many more features.">يُتيح نظامنا العديد من التقارير عن إدارة المركبات مثل إدارة الموقع الجغرافي وبيان الرحلات وإستهلاك الوقود والعديد من المزيا</p>
+                </div>
+            </div>
+                <div class="bottom-element-1 text-center">
+                    <h4 style="width: 75%; color: white;" data-lang-ar="ابدأ تتبع اسطولك اليوم" data-lang-en="Start tracking your fleet today!">ابدأ تتبع اسطولك اليوم</h4>
+                </div>
+                <div id="particles-js"></div>
+            </div>
+        </div>
+
+        <section class="custom-section font-arabic" id="sec-01">
+            <div class="container">
+                <h1 class="font-weight-bold text-center mb-5">
+                    <strong data-lang-ar="مرحبا بكم في موقعنا" data-lang-en="Welcome to Our Site">مرحبا بكم في موقعنا</strong>
+                </h1>
+                <div class="row align-items-center">
+                    <div class="col-md-5 image">
+                        <img src="img/vecteezy_ai-generated-road-trip-essentials-car-map-and-open-road_38965037.jpg" class="img-fluid mb-4" alt="Image">
+                    </div>
+                    <div class="col-md-5 text-about">
+                        <h3 class="font-weight-bold" data-lang-ar="نبذه عن خرائط التتبع" data-lang-en="About Tracking Maps">نبذه عن خرائط التتبع</h3>
+                            <p data-lang-ar="مؤسسة خرائط التتبع احد اكبر المؤسسات الرائدة في مجال تتبع المركبات" data-lang-en="Tracking Maps Foundation is one of the largest leading institutions in the field of vehicle tracking.">مؤسسة خرائط التتبع احد اكبر المؤسسات الرائدة في مجال تتبع المركبات</p>
+                            <p data-lang-ar="معتمدة من هيئة الاتصالات وتقنية المعلومات بترخيص رقم : 650-07-43" data-lang-en="Approved by the Communications and Information Technology Commission with license number: 650-07-43.">معتمدة من هيئة الاتصالات وتقنية المعلومات بترخيص رقم : 650-07-43</p>
+                            <p data-lang-ar="معتمدة من هيئة النقل العام" data-lang-en="Approved by the Public Transport Authority.">معتمدة من هيئة النقل العام</p>
+                            <p data-lang-ar="سجل تجاري رقم : 1128185906" data-lang-en="Commercial Registration No.: 1128185906">سجل تجاري رقم : 1128185906</p>
+                        </div>
+                    </div>
+                    <div class="social-icons text-center">
+                        <a href="https://www.facebook.com"><i class="fab fa-facebook fs-2"></i></a>
+                        <a href="https://www.twitter.com"><i class="fab fa-twitter fs-2"></i></a>
+                        <a href="https://www.linkedin.com"><i class="fab fa-linkedin fs-2"></i></a>
+                        <a href="https://www.instagram.com"><i class="fab fa-instagram fs-2"></i></a>
+                    </div>
+                </div>
+            </section>
+    
+        <section class="custom-section font-arabic" id="sec-02">
+            <div class="container">
+                <h1 class="font-weight-bold text-center mb-5">
+                    <strong data-lang-ar="ما نقدمه" data-lang-en="Our Offerings">ما نقدمه</strong> <!-- What we offer -->
+                </h1>
+                
+                <div class="row align-items-center">
+                    <div class="col-md-5 image">
+                        <img src="img/vecteezy_computer-equipment-in-a-row-network-connection-plug-hard_32935923.jpg" class="img-fluid mb-4" alt="Image">
+                    </div>
+                    <div class="col-md-8 text-service">
+                        <h2 class="mb-4" data-lang-ar="الخدمات والمنتجات" data-lang-en="Services & Products">الخدمات والمنتجات</h2>
+                        <h4 data-lang-ar="(FMB920) جهاز تتبع" data-lang-en="Tracking Device FMB920">(FMB920) جهاز تتبع</h4>
+                        <p data-lang-ar="جهاز تعقب أوروبي صغير وعالي الدقة يحتوي على منفذ طاقة ومنفذ داخلي لشريحة انترنت وبطارية يدوم عمرها 6 ساعات" data-lang-en="A small and high-resolution European tracker with a power outlet, an internal port for an internet chip and a battery that lasts 6 hours.">جهاز تعقب أوروبي صغير وعالي الدقة يحتوي على منفذ طاقة ومنفذ داخلي لشريحة انترنت وبطارية يدوم عمرها 6 ساعات</p>
+                        <h4 data-lang-ar="(FMB120) جهاز تتبع" data-lang-en="FMB120 Tracking Device">(FMB120) جهاز تتبع</h4>
+                        <p data-lang-ar="جهاز تعقب أوروبي صغير وعالي الدقة يحتوي على منفذ طاقة ومنفذ داخلي لشريحة انترنت وبطارية يدوم عمرها 6 ساعات" data-lang-en="A small and high-resolution European tracker with a power outlet, an internal port for an internet chip and a battery that lasts 6 hours.">جهاز تعقب أوروبي صغير وعالي الدقة يحتوي على منفذ طاقة ومنفذ داخلي لشريحة انترنت وبطارية يدوم عمرها 6 ساعات</p>
+                        <h4 data-lang-ar="ميكانيكي & حساس هواء" data-lang-en="Mechanical & Air sensor">ميكانيكي & حساس هواء</h4>
+                        <p data-lang-ar="ميكانيكي & حساس وزن هواء" data-lang-en="Mechanical and Air weight sensor.">ميكانيكي & حساس وزن هواء</p>
+                    </div>
+                    <div class="col-md-8 text-service mt-3">
+                        <h4 data-lang-ar="لماذا أجهزتنا ؟" data-lang-en="Why our devices?">لماذا أجهزتنا ؟</h4>
+                        <p data-lang-ar="الجهاز من افضل الاجهزة الموجودة في السوق في مجال تتبع السيارات حيث نوفر تركيب جميع اجهزتنا مجانا في موقع العميل" data-lang-en="The device is one of the best quality devices in the market in the field of car tracking, as we provide free installation of all our devices at the customer's place.">الجهاز من افضل الاجهزة الموجودة في السوق في مجال تتبع السيارات حيث نوفر تركيب جميع اجهزتنا مجانا في موقع العميل</p>
+                    </div>
+                </div>
+                <div class="class-button">
+                    <button class="btn btn-dark" id="mapViewBtn" data-lang-ar="إظهار الخريطة" data-lang-en="Map View">إظهار الخريطة</button> <!-- Show map -->
+                </div>
+            </div>
+        </section>
+        
+        <section class="custom-section font-arabic" id="sec-03">
+            <div class="container">
+                <h1 class="font-weight-bold text-center mb-5">
+                    <strong data-lang-ar="تواصل معنا" data-lang-en="Get In Touch">تواصل معنا</strong> <!-- Contact us -->
+                </h1>
+                
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center mb-5 media-info">
+                            <i class="fa fa-phone fa-2x pl-2"></i> 
+                            <div>
+                                <h4 class="service-title mb-0" data-lang-ar="اتصل بنا عبر الهاتف" data-lang-en="Call Us">اتصل بنا عبر الهاتف</h4> <!-- Contact us by phone-->
+                                <p class="service-description" style="display: none;" data-lang-ar="للاستفسار اتصل بنا على الرقم 920013711" data-lang-en="For inquiries, call us at 920013711.">للاستفسار اتصل بنا على الرقم 920013711</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-5 media-info">
+                            <i class="fa-solid fa-circle-info fa-2x pl-2"></i> 
+                            <div>
+                                <h4 class="service-title mb-0" data-lang-ar="استفسارات وسائل الإعلام" data-lang-en="Media Inquiries">استفسارات وسائل الإعلام</h4>
+                                <p class="service-description" style="display: none;" data-lang-ar="للاستفسارات الإعلامية، يرجى التواصل عبر البريد الإلكتروني support@trackingmaps.sa" data-lang-en="For media inquiries, reach out to support@trackingmaps.sa.">للاستفسارات الإعلامية، يرجى التواصل عبر البريد الإلكتروني support@trackingmaps.sa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-5 media-info">
+                            <i class="fa-solid fa-headset fa-2x pl-2"></i> 
+                            <div>
+                                <h4 class="service-title mb-0" data-lang-ar="دعم العملاء" data-lang-en="Customer Support">دعم العملاء</h4>
+                                <p class="service-description" style="display: none;" data-lang-ar="هل تحتاج إلى مساعدة؟ اتصل بخدمة العملاء على الرقم 920013711 أو راسل الدعم عبر البريد الإلكتروني على support@trackingmaps.sa" data-lang-en="Need help? Contact customer call us at 920013711 or support at support@trackingmaps.sa.">هل تحتاج إلى مساعدة؟ اتصل بخدمة العملاء على الرقم 920013711 أو راسل الدعم عبر البريد الإلكتروني على support@trackingmaps.sa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-5 media-info">
+                            <i class="fa-regular fa-envelope fa-2x pl-2"></i> 
+                            <div>
+                                <h4 class="service-title mb-0" data-lang-ar="اطرح سؤالا" data-lang-en="Ask a Question">اطرح سؤالا</h4>
+                                <p class="service-description" style="display: none;" data-lang-ar="هل لديك سؤال؟ أرسل لنا رسالة على support@trackingmaps.sa" data-lang-en="Have a question? Drop us a message at support@trackingmaps.sa.">هل لديك سؤال؟ أرسل لنا رسالة على support@trackingmaps.sa</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-center mb-5 media-info">
+                            <i class="fa-regular fa-comment-dots fa-2x pl-2"></i> 
+                            <div>
+                                <h4 class="service-title mb-0" data-lang-ar="الدردشة المباشرة" data-lang-en="Chat Live">الدردشة المباشرة</h4>
+                                <p class="service-description" style="display: none;" data-lang-ar="ابدأ محادثة مباشرة مع أحد ممثلينا. اتصل بنا على الرقم 920013711" data-lang-en="Start a live chat with one of our representatives. Call us at 920013711.">ابدأ محادثة مباشرة مع أحد ممثلينا. اتصل بنا على الرقم 920013711</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6 text-center image">
+                        <img src="img/vecteezy_tourist-planning-vacation-with-the-help-of-world-map-and_8006100.jpg" alt="Service Image" class="img-fluid mb-4"> 
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="custom-section font-arabic" id="sec-04">
+            <div class="container">
+                <h1 class="font-weight-bold text-center mb-5">
+                    <strong data-lang-ar="عرض الموقع" data-lang-en="Map View">عرض الموقع</strong>
+                </h1>
+                <div class="row">
+                    <div class="col-md-3 tracking-panel mb-2">
+                        <h4 class="mb-3" data-lang-ar="لوحة التتبع" data-lang-en="Tracking Panel">لوحة التتبع</h4>
+                        <div id="tracking-locations" class="mt-5 mb-3">
+                            <a href="#" class="location-link d-block text-dark text-decoration-none" id="boltText" data-lat="26.39783" data-lng="43.87193" data-lang-ar="القصيم (الفرع الرئيسي)" data-lang-en="Qassim (Main Branch)">القصيم (الفرع الرئيسي)</a><br>
+                            <a href="#" class="location-link d-block text-dark text-decoration-none" id="boltText" data-lat="21.45974" data-lng="39.25681" data-lang-ar="فرع جدة" data-lang-en="Jeddah Branch">فرع جدة</a><br>
+                            <a href="#" class="location-link d-block text-dark text-decoration-none" id="boltText" data-lat="24.65974" data-lng="46.83165" data-lang-ar="فرع الرياض" data-lang-en="Riyadh Branch">فرع الرياض</a>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-8 map-view mt-2">
+                        <div id="map" style="height: 400px; background-color: #eaeaea;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-customsection font-arabic" id="sec-05" style="display: none;">
+            <div class="container">
+                <div style="position: relative;">
+                    <h1 class="font-weight-bold text-center mb-5" style="position: relative;" data-lang-ar="سياسة الخصوصية" data-lang-en="Privacy Policy">
+                        سياسة الخصوصية
+                    </h1>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="row font-arabic">
+                    <div class="col-md-12 pp-panel">
+                        <h4 class="text-dark mb-4" style="font-size:small; direction: rtl;">
+
+                            <span >مقدمة</span> </br> </br>
+                            قد أسست خرائط التتبع خدمة تتبع المركبات منذ ثمانية أعوام على يد مجموعة من الخبراء والمختصين , وقد وضعت الأسس والأهداف والاستراتيجيات التي تمكنها من أن تصبح إحدى الشركات الرائدة في المملكة العربية السعودية .
+                            </br> </br>
+                                        <span > بيان </span>  </br></br>
+                            تنطبق سياسة الخصوصية هذه على كافة البيانات الشخصية، والتي تقوم بتقديمها من خلال الموقع الإلكتروني على الشبكة www.trackingmaps.sa تم وضع سياسة الخصوصية هذه من أجل العميل لتعزيز ثقته حيال خصوصية وسلامة تفاصيل معلوماته الشخصية
+                                    </br></br>
+                            <span > ماذا نفعل بمعلومات المستخدم التي تقدمها إلينا  </span> </br>
+                            ستحافظ خرائط التتبع في كافة الأوقات على خصوصية وسرية كافة البيانات الشخصية التي تتحصل عليها. ولن يتم إفشاء هذه المعلومات إلا إذا كان ذلك مطلوباً أو مسموحا به من قبل العميل أو أية جهة حكومية مصرح لها وفقا للأنظمة المرعية بالاطلاع على تلك المعلومات، أو بناء على موافقة خطيه من العميل لدى قيامك بإدخال معلومات المستخدم، فأنت توافق بأن نقوم نحن بالاحتفاظ بمعلومات المستخدم الخاصة بك
+                                    </br></br>
+                            <span >التحديثات </span> </br></br>
+                            قد نقوم بتغيير سياسة الخصوصية من وقت إلى آخر ولهذا يتعين عليك مراجعتها دوريا. ويكون استخدامك لموقع خرائط التتبع دلالة على قبول سياسة الخصوصية المطبقة في ذلك الوقت. نحتفظ بحقنا بتغيير أو تعديل أو تحديث سياسة الخصوصية هذه في أي وقت من الأوقات.
+                            <br></br>
+                            <span > جمع البيانات  </span> <br></br>
+                            حتى تستطيع خرائط التتبع تقديم خدماتها بالشكل الملائم فإنها قد تقوم بجمع بعض المعلومات الشخصية مثل:
+                            <br>
+                            <i class="bi bi-caret-left-fill"></i> المعلومات التي تعطى إلينا عند التسجيل مع خدماتنا (مثل الاسم والعنوان و البريد الإلكتروني ورقم الهاتف . <br>
+                            <i class="bi bi-caret-left-fill"></i> تقديم المنتجات و الخدمات لعملائها  <br>
+                            <i class="bi bi-caret-left-fill"></i> إنشاء علاقة تجارية يعتمد عليها مع العملاء والحفاظ عليها. <br>
+                            <i class="bi bi-caret-left-fill"></i> المتطلبات القانونية و التنظيمية. <br>
+                            <i class="bi bi-caret-left-fill"></i> إصدار الفواتير و الخدمات التي قام عملاء الشركة بالاشتراك فيها أو شراءها. <br>
+                            <i class="bi bi-caret-left-fill"></i> مساعدة العميل في اختيار المنتجات و الخدمات. <br>
+                            <i class="bi bi-caret-left-fill"></i> توفير المعلومات لعملاء الشركة حول التطورات و المنتجات الجديدة. عند استخدام الموقع قد تصادف خدمات حيث يتم الطلب منك كمستخدم إدخال معلومات المستخدم الخاصة بك. يتم استخدام مثل معلومات المستخدم هذه فقط للهدف التي يتم جمعها من أجله، وأي أغراض أخرى يتم تحديدها في نقطة الجمع وذلك بالتوافق مع سياسة الخصوصية هذه. لن نقوم بالإفصاح عن أي من معلومات المستخدم التي توفرها ، باستثناء ضرورة توفير خدمات قمت بتحديد طلبها.
+                            <br></br>
+                            
+                            <span > استخدام بيانات الموقع  </span>  <br></br>
+                            <i class="bi bi-caret-left-fill"></i> لتمكين السائق من الارتباط بالسيارات. <br>
+                            <i class="bi bi-caret-left-fill"></i> لعرض موقعك الحالي على الخريطة. <br></br>
+                            <span > إلغاء الاشتراك  </span> <br></br>
+                            يحق لك في اي وقت الغاء الخدمة ولن يكون هنالك اي مبالغ مسترجعه الرجاء ملاحظة أننا لن نقوم بالإفصاح عن معلومات المستخدم الخاصة بك <br></br>
+                            
+                            <span > حماية معلومات المستخدم الخاصة بك    </span> <br></br>
+                            تقدر خرائط التتبع حرصكم واهتمامكم بشأن خصوصية بياناتكم على شبكة الإنترنت حيث تبذل الشركة كافة مساعيها بهدف تقديم خدمة عالية الجودة لكافة عملائها. لقد تم إعداد هذه السياسة لمساعدتكم في تفهم طبيعة البيانات التي نقوم بتجميعها منكم عند زيارتكم لموقعنا على شبكة الإنترنت وكيفية تعاملنا مع هذه البيانات الشخصية. بتسجيلك في القائمة البريدية لمتخصيصي الحماية فان خصوصية عنوان بريدك ستبقى محترمة و لن يتم نشره.
+                            <br></br>
+                            <span > إبداء أي استفسارات أو ملاحظات  </span>  <br></br>
+                            سيتم استخدام البيانات التي يتم تقديمها من قبلك في الرد على كافة استفساراتك، أو ملاحظاتك، أو طلباتك من قبل خرائط التتبع. سيتم التعامل مع كافة البيانات المقدمة من قبلك على أساس أنها سرية. تتطلب النماذج التي يتم تقديمها مباشرة على الشبكة تقديم البيانات التي ستساعدنا في تحسين مستوى جودة العناية بالعملاء. يمكنك مراجعة وتحديث المعلومات الخاصة بك في قاعدة بيانات العملاء لدينا، . ننصح دائما بقيام العملاء بتحديث معلوماتهم الشخصية على الفور، عندما تتطلب ذلك
+                            <br></br>
+                            <span > الخاتمة </span>  <br></br>
+                            إن مخاوفك واهتمامك بشأن سرية وخصوصية البيانات تعتبر مسألة في غاية الأهمية بالنسبة لنا.نحن نأمل أن يتم تحقيق ذلك من خلال هذه السياسة
+                            <br>
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-customsection" id="sec-06" style="display: none;">
+            <div class="container">
+                <div style="position: relative;">
+                    <h1 class="font-weight-bold text-center mb-5" style="position: relative;" data-lang-ar="الشروط و الأحكام" data-lang-en="Terms and Conditions">
+                        الشروط و الأحكام
+                    </h1>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="row font-english">
+                    <div class="col-md-12 pp-panel">
+                        <h4 class="text-dark mb-4" style="font-size:small; direction: ltr;">
+
+                            <span style="font-size: large;">TRACKING MAPS TERMS OF SERVICE</span> </br> </br>
+                            1.	1. PARTIES AND CONCLUSION OF THE AGREEMENT <br> <br>
+                            1.1. These terms of service (Terms of Service or the Agreement) define the legally binding 
+                            terms of use for the service and any software required to deliver the service.<br>
+                            1.2. Terms of Service are made between the entity named in the main account of the service 
+                            (Customer) and one of the TRACKING MAPS entities, who provide the relevant services. <br> 
+                            1.3. Your consent to be legally bound by the Terms of Services is expressed at the time of
+                            registering your account or at the time of first access to your account. <br>
+                            1.4. If you are entering into this Agreement on behalf of your employer or other legal entity,
+                            you represent that you have the legal authority to bind Customer. Customer’s
+                            continued use of services and software provided by TRACKING MAPS constitute assent to the
+                            Agreement. If Customer does not unconditionally agree to all of the terms of this
+                            Agreement, you must cancel your registration or login process and you are not
+                            permitted to use the service or the software. <br> <br>
+                            2.	2. SERVICES <br><br>
+                            2.1. Subject to Customer’s full compliance with the terms and conditions of this Agreement,
+                            TRACKING MAPS will provide the Customer with a subscription to access its cloud-based
+                            services: <br>
+                            2.1.1. fleet monitoring and fleet management system (AVL WEB https://tracmap1.com); <br>
+                            2.1.2. fleet monitoring and fleet management system (AVL WEB https://tracmap1.com); <br>
+                            2.1.3. fleet monitoring and fleet management system (AVL WEB https://tracmap1.com);<br>
+                            2.1.4. other IoT related network management, connectivity services, security services,
+                            router operating systems, and other related services, including any Platform APIs
+                            or SDKs, mobile apps, provided by TRACKING MAPS through the Internet . <br>
+                            2.2. Except for Client Software, the service and the software underlying or used to deliver
+                            the Service will be hosted on servers under control or direction of TRACKING MAPS or its third
+                            party providers. <br> 
+                            2.3.  Any Service is subject to modification from time to time
+                            at TRACKING MAPS sole discretion, for any purpose deemed appropriate by TRACKING MAPS.
+                            TRACKING MAPS will use reasonable efforts to give Customer prior notice of any
+                            material modifications. TRACKING MAPS may also decide to discontinue the Service or any
+                            component of the Service by giving reasonable prior notice to Customer. <br><br>
+                            3.	3. FEES AND PAYMENT TERMS<br><br>
+                            3.1. Unless otherwise notified by TRACKING MAPS when granting access to the Service or when
+                            ordering TRACKING MAPS Products or Service (e.g. in the purchase orders), the Service is
+                            provided without charge. <br>
+                            3.2. Certain Service may be available for trial period. After the trial period ends the
+                            Customer will be charged a monthly or annuly subscription fee. <br>
+                            3.3. Paid Service are provided on a monthly or annuly subscription basis and are payable in advance
+                            by Customer (pay-as-you-go). If TRACKING MAPS does not receive payment until the
+                            beginning of next subscription month, the relevant Service may be automatically
+                            suspended. If suspension due to non-payment lasts longer than three months, the
+                            Service subscription may be terminated. <br>
+                            3.4. Pricing for paid Service will be communicated to Customer by TRACKING MAPS at the time of
+                            granting access to the Service, in the purchase order for products, or otherwise
+                            published by TRACKING MAPS on the relevant Service webpage. The pricing is subject to
+                            change not more often than twice per year upon prior notice of 30 days. If Customer
+                            does not agree with the changed pricing, they may cancel the subscription. <br><br>
+                            4.4. SERVICE LEVELS AND SUPPORT <br><br>
+                            4.1. Service Level. For paid Service subscriptions TRACKING MAPS will undertake commercially
+                            reasonable efforts to make the Service available at least 95 % of time, or as otherwise
+                            documented and made available by TRACKING MAPS to Customer, except for TRACKING MAPS right
+                            to suspend Customer’s access to the Service: (i) for scheduled or emergency
+                            maintenance, (ii) in the event Customer is in breach of this Agreement, including failure
+                            to pay any amounts due, or (iii) as a result of circumstances beyond TRACKING MAPS
+                            reasonable control (including, but not limited to: acts of God, acts of government, flood,
+                            fire, earthquake, civil unrest, acts of terror, strike or other labor problem, hosting
+                            provider failure or delay, issues related to a third party, or denial of service attacks)
+                            (“Force Majeure”). <br>
+                            4.2. Support. As part of support the Customer may access and use TRACKING MAPS VIP helpdesk <br><br>
+                            5.	5. RESTRICTED USES <br><br>
+                            5.1. Customer will not, and will not permit any third party to: <br>
+                            5.1.1. reverse engineer, decompile, disassemble or otherwise attempt to discover the
+                            source code, object code or underlying structure, ideas or algorithms of any portion
+                            of the Service, documentation or data related to the Service (provided that reverse
+                            engineering is prohibited only to the extent such prohibition is not contrary to
+                            applicable law); <br>
+                            5.1.2. modify, translate, or create derivative works based on the Service; <br>
+                            5.1.3. use the Services for time-sharing or service bureau purposes or for any purpose
+                            other than its own internal use, use the Services in connection with any high risk
+                            or strict liability activity; <br>
+                            5.1.4. use the Service other than in accordance with this Agreement and in compliance
+                            with all applicable laws and regulations, including but not limited to any privacy
+                            laws, marketing and data security laws and government guidelines, and laws and
+                            regulations concerning intellectual property, consumer and child protection,
+                            obscenity or defamation; <br>
+                            5.1.5. run or use any processes that run or are activated while Customer is not logged on
+                            to the Services or that “crawl,” “scrape,” or “spider” the Service; or <br>
+                            5.1.6. use the Service in any manner that (i) is harmful, fraudulent, deceptive,
+                            threatening, abusive, harassing, tortious, defamatory, vulgar, obscene, libelous, or
+                            otherwise objectionable (including without limitation, accessing any computer,
+                            computer system, network, software, or data without authorization, breaching the
+                            security of another user or system, and/or attempting to circumvent any user
+                            authentication or security process), (ii) impersonates any person or entity,
+                            including without limitation any employee or representative of TRACKING MAPS, or (iii)
+                            contains a virus, Trojan horse, worm, time bomb, unsolicited bulk, commercial, or
+                            “spam” message, or other harmful computer code, file, or program (including
+                            without limitation, password guessing programs, decoders, password gatherers,
+                            keystroke loggers, cracking tools, packet sniffers, and/or encryption circumvention
+                            programs). <br>
+                            5.2. Customer will cooperate with TRACKING MAPS in connection with the performance of this
+                            Agreement by making available such personnel and information as may be reasonably
+                            required, and taking such other actions as TRACKING MAPS may reasonably request. Customer
+                            will also cooperate with TRACKING MAPS in establishing a password or other procedures for
+                            verifying that only designated employees of Customer has access to any administrative
+                            functions of the Services. <br>
+                            5.3. Customer is responsible for all acts and omissions of its employees, subcontractors,
+                            and anyone to whom Customer provides access to the Service or that is using or
+                            accessing the Service on Customer’s behalf (Agents) (including any breaches of this
+                            Agreement) as if Customer committed such act or omission itself. TRACKING MAPS may
+                            exercise any rights and/or remedies under this Agreement, at law or in equity, against
+                            Customer based upon such acts or omissions of such Agents. <br>
+                            5.4. As a condition of Customer’s use of the Services and with respect to third-party claims,
+                            Customer agrees to indemnify, defend, and hold harmless TRACKING MAPS, its affiliates,
+                            subsidiaries, and its and their respective officers, directors, employees, agents,
+                            licensors, contractors, suppliers, successors, and assigns from and against any
+                            judgements, claims, actions, losses, damages, liabilities, costs, or expenses (including,
+                            but not limited to, reasonable attorneys’ fees and legal expenses) of any kind arising
+                            from Customer’s and/or its Agents use of the Service or related products, or from or
+                            attributable to any breach by Customer and/or its Agents of Customer’s obligations
+                            established herein or any privacy, employee, or consumer protection right that is
+                            implicated herein and by the Service, or Customer’s and/or its Agents infringement, or
+                            the infringement or use by any other user of Customer’s account, of any intellectual
+                            property or other right of any person or entity. All indemnification duties shall continue
+                            in effect even after, and notwithstanding, any subsequent revocation of consent or the
+                            expiration or termination of the Agreement or Customer’s and/or its Agents use of the
+                            Services. <br>
+                            5.5. Customer will be responsible for maintaining the security of Customer’s account,
+                            passwords, including but not limited to administrative and user passwords and files,
+                            and for all uses of Customer account with or without TRACKING MAPS knowledge or consent. <br>
+                            5.6. THE SERVICES ARE NOT DESIGNED, MANUFACTURED, OR INTENDED FOR
+                            USE WITH DATA, CONTENT OR INFORMATION USED FOR OR REQUIRING
+                            FAIL-SAFE PERFORMANCE, SUCH AS IN THE OPERATION OF NUCLEAR
+                            FACILITIES, AIRCRAFT NAVIGATION OR COMMUNICATION SYSTEMS,
+                            AIR TRAFFIC CONTROL, DIRECT LIFE SUPPORT MACHINES, OR WEAPON
+                            SYSTEMS, IN WHICH THE FAILURE OF THE SERVICES, INTERNET OR
+                            THIRD PARTY CLOUD SERVICE PROVIDER INFRASTRUCTURE COULD
+                            LEAD DIRECTLY TO DEATH, PERSONAL INJURY, OR SEVERE PHYSICAL
+                            OR ENVIRONMENTAL DAMAGE (“HIGH RISK APPLICATIONS”).
+                            TRACKING MAPS AND ITS THIRD PARTY LICENSORS SPECIFICALLY DISCLAIM
+                            ANY EXPRESS OR IMPLIED WARRANTY OF FITNESS FOR HIGH RISK
+                            APPLICATIONS. <br><br>
+                            6.	6. CONFIDENTIALITY <br><br>
+                            6.1. Each party (the “Receiving Party”) understands that the other party (the “Disclosing
+                            Party”) has disclosed or may disclose information relating to the Disclosing Party’s
+                            technology or business (hereinafter referred to as “Proprietary Information” of the
+                            Disclosing Party). Without limiting the foregoing, the Client Software and any software
+                            provided by TRACKING MAPS is TRACKING MAPS Proprietary Information. Customer will obtain
+                            agreement from its Agents that it will treat TRACKING MAPS Proprietary Information in
+                            accordance with the terms of this Agreement prior to allowing any such Agent to have
+                            access to the Services. <br>
+                            6.2. The Receiving Party agrees: (i) not to divulge to any third person any such Proprietary
+                            Information, (i) to give access to such Proprietary Information solely to those
+                            employees and Agents with a need to have access thereto for purposes of this
+                            Agreement, and (iii) to take the same security precautions to protect against disclosure
+                            or unauthorized use of such Proprietary Information that the party takes with its own
+                            proprietary information, but in no event will a party apply less than reasonable
+                            precautions to protect such Proprietary Information. The Disclosing Party agrees that
+                            the foregoing will not apply with respect to any information that the Receiving Party
+                            can document (a) is or becomes generally available to the public without any action by,
+                            or involvement of, the Receiving Party, or (b) was in its possession or known by it prior
+                            to receipt from the Disclosing Party, or (c) was rightfully disclosed to it without
+                            restriction by a third party, or (d) was independently developed without use of any
+                            Proprietary Information of the Disclosing Party. Nothing in this Agreement will
+                            prevent the Receiving Party from disclosing Proprietary Information pursuant to any
+                            judicial or governmental order, provided that the Receiving Party gives the Disclosing
+                            Party reasonable prior notice of such disclosure to contest such order. <br>
+                            6.3. Customer acknowledges that TRACKING MAPS does not wish to receive any Proprietary
+                            Information from Customer that is not necessary for TRACKING MAPS to perform its
+                            obligations under this Agreement (including, without limitation, any information
+                            protected under applicable privacy laws and regulations), and, unless the parties
+                            specifically agree otherwise, TRACKING MAPS may reasonably presume that any unrelated
+                            information received from Customer is not confidential or Proprietary Information. <br>
+                            6.4. Both parties will have the right to disclose the existence but not the terms and
+                            conditions of this Agreement, unless such disclosure is approved in writing by both
+                            Parties prior to such disclosure, or is included in a filing required to be made by a party
+                            with a governmental authority (provided such party will use reasonable efforts to obtain
+                            confidential treatment or a protective order) or is made on a confidential basis as
+                            reasonably necessary to potential investors or acquirers and such are bound by the terms
+                            of a similar confidentiality agreement with at least as restrictive covenants to protect
+                            such information. <br><br>
+                            7.	7. INTELLECTUAL PROPERTY RIGHTS <br><br>
+                            7.1. Except as expressly set forth herein, TRACKING MAPS alone (and its licensors, where
+                            applicable) will retain all intellectual property rights relating to the Service and the
+                            software and any suggestions, ideas, enhancement requests, feedback,
+                            recommendations or other information provided by Customer or any third party relating
+                            to the Service and/or the software, which are hereby assigned to TRACKING MAPS. Customer
+                            will not copy, distribute, reproduce or use any of the foregoing except as expressly
+                            permitted under this Agreement. This Agreement is not a sale and does not convey to
+                            Customer any rights of ownership in or related to the Service or any intellectual
+                            property rights. <br>
+                            7.2. Customer represents and warrants that Customer owns and will continue to own all
+                            worldwide right, title and interest in, or presently holds and will continue to hold a valid
+                            license to, all information distributed by or on behalf of Customer through the Service
+                            (Content) and the intellectual property rights with respect to that Content. If TRACKING MAPS
+                            receives any notice or claim that any Content, or activities hereunder with respect to
+                            any Content, may infringe or violate rights of a third party or any applicable law or
+                            regulation (“Claim”), TRACKING MAPS may (but is not required to) suspend activity hereunder
+                            with respect to that Content and Customer will indemnify TRACKING MAPS from all liability,
+                            damages, settlements, attorney fees and other costs and expenses in connection with
+                            any such Claim, as incurred. <br><br>
+                            8.	8. USE OF DATA <br><br>
+                            8.1. By using or accessing the Service, Customer hereby grants to TRACKING MAPS a worldwide,
+                            royalty-free, non-exclusive, irrevocable, sublicensable right and license to use, copy,
+                            display, perform, store, distribute and modify Data as necessary to perform the Service.
+                            “Data” means all electronic data and information submitted by Customer for set up and
+                            provisioning of the Service, and information created, generated, collected or harvested
+                            by TRACKING MAPS in the furtherance of this Agreement and the security and performance of
+                            the Service. Data does not include any Content. <br>
+                            8.2. Notwithstanding anything else in this Agreement or otherwise, TRACKING MAPS may monitor
+                            Customer’s use of the Service and Customer Information, and in an aggregate and
+                            anonymous manner, compile statistical and performance information related to the
+                            provision and operation of the Service (TRACKING MAPS Data), and may make such
+                            information publicly available, provided that such information does not identify
+                            Customer or Customer’s Proprietary Information. TRACKING MAPS shall own all right, title
+                            and interest in and to the TRACKING MAPS Data. To the extent needed to perfect TRACKING MAPS
+                            ownership in the TRACKING MAPS Data, Customer hereby irrevocably assigns all right, title
+                            and interest in such TRACKING MAPS Data to TRACKING MAPS. <br>
+                            8.3. The Service may make use of directly non- identifiable location data (including, but
+                            not limited to, GPS coordinates, the MAC address and received signal strength of
+                            nearby Wi-Fi access points, nearby cell tower IDs, and the IP Address) that is sent by
+                            devices using the Service. In order to allow TRACKING MAPS to provide the Service and to
+                            ensure the best user experience, the Service may utilize a third party provider to resolve
+                            location requests. At all times, Customer’s location information will be treated in
+                            accordance with such third party’s privacy policy. By using location services, Customer
+                            consents to TRACKING MAPS and its partners’ transmission, collection, maintenance,
+                            processing and use of Customer’s location data and queries to provide and improve
+                            location-based products and services. <br>
+                            8.4. Customer represents and warrants to TRACKING MAPS that it has a lawful basis to use location
+                            related Service and provided location data as well as other personal data to be processed
+                            by TRACKING MAPS on behalf of Customer, and that Customer has complied with all
+                            applicable transparency obligations to notify the data subjects about, or obtained
+                            informed consents for, such transfer and processing of their personal data.  <br>
+                            8.5. During the term of this Agreement, Customer will supply TRACKING MAPS with contact details
+                            for Customer’s employees, contractors and/or representatives (Contact Data) in order
+                            for TRACKING MAPS to carry out its obligations under this Agreement (for example, to
+                            accomplish the provision of Service, allow the Customer to access and use the Service,
+                            enable Customer’s employees, contractors and/or representatives to access and use the
+                            Service, and, where applicable, the subscription ordering process as described this
+                            Agreement). Customer
+                            shall notify TRACKING MAPS as soon as reasonably practicable of any amendments required to
+                            the Contact Data either through VIP helpdesk system or directly to responsible sales
+                            manager. <br>
+                            8.6. Location of data. TRACKING MAPS cannot guaranty that your data is hosted on servers located
+                            in your jurisdiction, therefore you are solely responsible to comply with any data
+                            localisation requirements and should not use the Service in breach of those
+                            requirements. <br><br>
+                            9.9.	SUSPENSION <br><br>
+                            9.1. Notwithstanding anything to the contrary, TRACKING MAPS reserves the right to suspend or
+                            limit Customer’s access to the Service if TRACKING MAPS determines, in its sole discretion,
+                            that Customer’s use of the Service does or is likely to:
+                            9.1.1. damage the Service or interfere with TRACKING MAPS ability to reliably provide the
+                            Service to other users; <br>
+                            9.1.2. place an unreasonable or unexpected load on the Service; <br>
+                            9.1.3. there is a threat or attack on the cloud servers hosting the Services (including a
+                            denial of service attack) or other event that may create a risk to the Services, to
+                            Customer or to any other user of the Services; <br>
+                            9.1.4. Customer’s use of the Services disrupts or poses a security risk to the Services or
+                            any other user of the Services, may harm TRACKING MAPS systems or any other user of
+                            the Services, or may subject TRACKING MAPS or any third party to liability; <br>
+                            9.1.5. Customer is misusing the Services or using the Services for fraudulent or illegal
+                            activities; <br>
+                            9.1.6. subject to applicable law, Customer has ceased to continue Customer’s business in
+                            the ordinary course, made an assignment for the benefit of creditors or similar
+                            disposition of Customer’s assets, or become the subject of any bankruptcy,
+                            reorganization, liquidation, dissolution or similar proceeding; <br>
+                            9.1.7. Customer is using the Services in breach of the Agreement; <br>
+                            9.1.8. Customer is in default of Customer’s payment obligations hereunder; or <br>
+                            9.1.9. there is an unusual spike or increase in Customer’s use of the Services
+                            (collectively, “Service Suspensions”). <br>
+                            9.2. Customer understands that many of the reasons for suspension listed above are imposed
+                            on us by third party licensors, are subject to change without notice, and may result in
+                            Customer’s access to the Services being suspended as a result of the actions of other
+                            users. <br>
+                            9.3. TRACKING MAPS will make commercially reasonable efforts, circumstances permitting, to
+                            provide written notice of any Service Suspension to Customer (including notices posted
+                            on the website or sent to Customer’s registered e-mail address) and to provide updates
+                            regarding resumption of Customer’s access to the Services following any Service
+                            Suspension. <br>
+                            9.4. TRACKING MAPS will have no liability for any damage, liabilities, losses (including any loss
+                            of data or profits) or any other consequences that Customer may incur as a result of any
+                            Service Suspension or limitations related to carrier coverage or support. <br><br>
+                            10.	10. TERMINATION <br><br>
+                            10.1.This Agreement shall continue until terminated in accordance with this Section.<br>
+                            10.2.Customer may cancel their subscription to any Service anytime. After cancellation, the
+                            subscription for the relevant Service will end at the end of the current subscription
+                            period. <br>
+                            10.3.If your subscription to any Service is suspended for more than three months, your
+                            subscription will automatically terminate after end of the third month of suspension.<br>
+                            10.4.If all subscriptions end upon cancellation or termination, the Agreement will
+                            automatically terminate upon end of the last subscription.<br>
+                            10.5.TRACKING MAPS may terminate provision of any Service and terminate the Agreement by 30
+                            days’ notice to Customer. <br>
+                            10.6.Customer’s access to the Service, and any licenses granted hereunder, shall terminate
+                            upon any termination of this Agreement. <br>
+                            10.7.After termination, Customer will be provided 30 days term to download any Customer
+                            Data accumulated during the use of the Service via the download tools that are available
+                            as part of the Service, or, where such tools are not available, by contacting us at
+                            avl@TRACKING MAPS.com . After end of such term, TRACKING MAPS will automatically remove all
+                            Customer Data associated with Customer’s subscriptions and use of the Service. <br>
+                            10.8.All sections of this Agreement, which by their nature should survive termination, will
+                            survive termination, including, without limitation, restrictions, accrued rights to
+                            payment, confidentiality obligations, intellectual property rights, warranty disclaimers,
+                            and limitations of liability. <br>
+                            10.9.Customer agrees that upon any termination or cancellation of this Agreement Customer
+                            will not be entitled to a refund of fees for any additional work previously performed by
+                            TRACKING MAPS at Customer’s request or any pre-paid Fees for subscriptions still in effect at
+                            the time of termination or cancellation, and Customer’s obligation to pay any balance
+                            due shall survive any such termination or cancellation. <br><br>
+                            11.	11. WARRANTY DISCLAIMER <br><br>
+                            11.1.TRACKING MAPS will make commercially reasonable efforts to make Services function
+                            essentially in accordance with their description published at the relevant Service
+                            webpage and will take commercially reasonable efforts to implement security and
+                            resilience measures in relation to the Service. <br>
+                            11.2.TRACKING MAPS DOES NOT WARRANT THAT THE OPERATION OF THE SERVICE
+                            OR ANY FUNCTION CONTAINED THEREIN WILL MEET CUSTOMER’S
+                            REQUIREMENTS, BE UNINTERRUPTED OR ERROR-FREE, THAT DEFECTS
+                            WILL BE CORRECTED, OR THAT THE SERVICE OR THE SERVERS THAT
+                            MAKE THIS SERVICE AVAILABLE ARE FREE OF VIRUSES OR OTHER
+                            HARMFUL COMPONENTS. THE SERVICE, SOFTWARE AND TRACKING MAPS
+                            PROPRIETARY INFORMATION AND ANYTHING PROVIDED IN
+                            CONNECTION WITH THIS AGREEMENT ARE PROVIDED “AS-IS,” WITHOUT
+                            ANY WARRANTIES OF ANY KIND. ANY USE OF THE SERVICE IS DONE AT
+                            CUSTOMER’S SOLE RISK AND CUSTOMER WILL BE SOLELY RESPONSIBLE
+                            FOR ANY DAMAGE, LOSS OR EXPENSE INCURRED AS A RESULT OF OR
+                            ARISING OUT OF CUSTOMER’S USE OF THE SERVICE. <br>
+                            11.3.TRACKING MAPS MAKES NO OTHER WARRANTY, EITHER EXPRESSED OR IMPLIED,
+                            WITH RESPECT TO ANY OF THE SERVICE. TRACKING MAPS SPECIFICALLY
+                            DISCLAIMS THE IMPLIED WARRANTIES OR CONDITIONS OF
+                            MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE OR
+                            NON-INFRINGEMENT. <br><br>
+                            12.	12. LIMITATION OF LIABILITY <br><br>
+                            12.1.TRACKING MAPS will not be liable for any loss resulting from a cause over which it does not
+                            have direct control. <br>
+                            12.2.TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW AND
+                            REGARDLESS OF WHETHER ANY REMEDY HEREIN FAILS OF ITS
+                            ESSENTIAL PURPOSE, IN NO EVENT SHALL TRACKING MAPS OR ITS THIRD PARTY
+                            LICENSORS BE LIABLE TO CUSTOMER OR ANY THIRD PARTY ARISING
+                            OUT OF THE USE OF OR INABILITY TO USE THE SERVICES, UNDER ANY
+                            CONTRACT, NEGLIGENCE, STRICT LIABILITY OR OTHER THEORY, FOR
+                            ANY SPECIAL, INCIDENTAL, INDIRECT, PUNITIVE OR CONSEQUENTIAL
+                            DAMAGES WHATSOEVER, INCLUDING, BUT NOT LIMITED TO, DAMAGES
+                            FOR: LOSS OF PROFITS OR REVENUES, BUSINESS INTERRUPTION, COST
+                            OF PROCUREMENT OF SUBSTITUTE GOODS OR TECHNOLOGY, LOSS OF
+                            PRIVACY, CORRUPTION OR LOSS OF DATA OR ITS INTEGRITY, FAILURES
+                            TO TRANSMIT OR RECEIVE DATA OR ANY OTHER PECUNIARY LOSS
+                            WHATSOEVER ARISING OUT OF OR IN ANY WAY RELATED TO THE USE
+                            OF OR INABILITY TO USE THE SERVICES OR OTHERWISE IN CONNECTION
+                            WITH ANY PROVISION OF THIS AGREEMENT, EVEN IF TRACKING MAPS OR ITS
+                            THIRD PARTY LICENSORS HAVE BEEN ADVISED OF THE POSSIBILITY OF
+                            SUCH DAMAGES. <br>
+                            12.3.THE TOTAL LIABILITY OF TRACKING MAPS AND ITS LICENSORS, WHETHER BASED
+                            IN CONTRACT, TORT (INCLUDING NEGLIGENCE OR STRICT LIABILITY),
+                            OR OTHERWISE, WILL BE LIMITED ONLY TO DIRECT DAMAGES
+                            DEMONSTRATED BY SUFFICIENT EVIDENCE AND WILL NOT EXCEED, IN
+                            THE AGGREGATE OF THE FEES PAID TO TRACKING MAPS HEREUNDER IN THE
+                            THREE MONTHS PERIOD ENDING ON THE DATE THAT A CLAIM OR
+                            DEMAND IS FIRST ASSERTED. THE FOREGOING LIMITATIONS WILL
+                            APPLY NOTWITHSTANDING ANY FAILURE OF ESSENTIAL PURPOSE OF
+                            ANY LIMITED REMEDY. <br>
+                            12.4.THE FOREGOING LIMITATIONS, EXCLUSIONS AND DISCLAIMERS SHALL
+                            APPLY TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
+                            EVEN IF ANY REMEDY FAILS ITS ESSENTIAL PURPOSE. <br><br>
+                            13.13.	MISCELLANEOUS <br><br>
+                            13.1.If any provision of this Agreement is found to be unenforceable or invalid, that
+                            provision will be limited or eliminated to the minimum extent necessary so that this
+                            Agreement will otherwise remain in full force and effect and enforceable. <br>
+                            13.2.This Agreement is not assignable, transferable or sublicensable by Customer except
+                            with TRACKING MAPS prior written consent. TRACKING MAPS may transfer and assign any of its
+                            rights and obligations under this Agreement with written notice to Customer. <br>
+                            13.3.Both parties agree that this Agreement is the complete and exclusive statement of the
+                            mutual understanding of the parties and supersedes and cancels all previous written and
+                            oral agreements, communications and other understandings relating to the subject
+                            matter of this Agreement, and that all waivers and modifications must be in a writing
+                            signed or otherwise agreed to by TRACKING MAPS, except as otherwise provided herein. <br>
+                            13.4.Neither party shall be liable to the other or responsible for delay or non-performance
+                            of any of the terms of the Agreement due to Force Majeure. <br>
+                            13.5.No agency, partnership, joint venture, or employment is created as a result of this
+                            Agreement and Customer does not have any authority of any kind to bind TRACKING MAPS in
+                            any respect whatsoever. <br>
+                            13.6.In any action or proceeding to enforce rights under this Agreement, the prevailing party
+                            will be entitled to recover costs and attorneys’ fees. <br>
+                            13.7.All notices under this Agreement will be in writing and will be deemed to have been
+                            duly given when received, if personally delivered; when receipt is electronically
+                            confirmed, if transmitted by e-mail. <br>
+                            13.8.Amendments. We reserve the right, in our sole discretion, to change, modify, add or
+                            remove provisions of this Agreement at any time. Customer is responsible for regularly
+                            reviewing this Agreement for changes. By using the Service after we post any changes
+                            to this Agreement or otherwise notify Customer of such changes, Customer agrees to
+                            accept those changes, whether or not Customer has reviewed them. If Customer does
+                            not agree to this Agreement, Customer should not use the Service and Customer should
+                            cancel Customer’s Subscription. <br>
+                            13.9. No Implied Waivers. If either party fails to require performance of any duty hereunder
+                            by the other party, such failure shall not affect its right to require performance of that
+                            or any other duty thereafter. The waiver by either party of a breach of any provision of
+                            this Agreement shall not be a waiver of the provision itself or a waiver of any breach
+                            thereafter, or a waiver of any other provision herein <br>
+                            13.10.All credit/debit cards details and personally identifiable information will NOT be stored, sold, shared, rented or leased to any third parties.<br>
+                            13.11.Any dispute or claim arising out of or in connection with this website shall be governed and construed in accordance with the laws of Saudi Arabia. <br>
+                            13.12.Saudi Arabia is our country of domicile. <br>
+                            13.13 We accept payments online using Visa and MasterCard credit/debit card in SAR. <br>
+                            13.14 (https://trackingmaps.sa) will NOT deal or provide any services or products to any of OFAC (Office of Foreign Assets Control) sanctions countries in accordance with the law of Saudi Arabia.
+                            
+                            
+                            </br> </br>
+                       
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pp-customsection font-arabic" id="sec-07" style="display: none;">
+            <div class="container">
+                <div style="position: relative;">
+                    <h1 class="font-weight-bold text-center mb-3" style="position: relative;" data-lang-ar="سياسة الاسترجاع" data-lang-en="Return Policy">
+                        سياسة الاسترجاع
+                    </h1>
+                    <button class="close-btn">&times;</button>
+                </div>
+                <div class="row font-english">
+                    <div class="col-md-12 pp-panel">
+                        <h4 class="text-dark mb-4" style="font-size:small; direction: ltr;">
+
+                            <span style="font-size: large;"> Refund & Cancellation & Replacement Policy </span> </br> </br>
+                            You can check out our entire return policies here.
+                            </br> </br>
+                            TRACKINGMAPS has an easy to process, customer friendly refund policy 
+                            </br> </br>
+                            a) I received a defective/damaged item, can I get a refund?
+                            In case the product received by you is damaged or defective, you could return the product in the same condition as you received it with the original box and/or packaging intact. Once we receive the returned product, we will inspect it. if the product is found to be defective or damaged, we will process the refund along with any shipping fees incurred.
+                            </br></br>
+                            b) I received a wrong item, how can I return it?
+                            In the unusual circumstance where the item received is wrong, you can return the item in the same condition you received and in the original box and/or packaging intact. Once we receive the returned item, we will process the refund along with free 15 day returns
+                            </br></br>
+                            c) I have changed my mind; can I return what I have bought?
+                            In case of change of mind, before shipping your order, just call us to cancel your order or you can cancel it from your noon account and we will process the refund along with any shipping fees applied to the same credit card/debit card which will reflect in your card within 7-14 business days. If you wish to return the item after receiving it, you have up to 15 days to return them, with the below terms and condition applied:
+                            </br></br>
+                            The return is in accordance with TRACKINGMAPS returns policy
+                            </br></br>
+                            The items are in its original retail packaging (Sealed/Closed Box)
+                            </br></br>
+                            d) I made a transaction via credit card. How can I receive a refund?
+                            In case if you cancel the order or if it’s cancelled before shipping, the amount will be refunded back to credit card/debit card automatically which will reflect in your card within 7-14 business days.
+                            </br></br>
+                            For delivered products, wherever the return reason is met as per TRACKINGMAPS return policy and post inspection by our team, we will refund the product amount (excluding the amount paid for the original shipping fees) as your TRACKINGMAPS store credits within 24 hours. Upon request, we can arrange for a transfer back to your credit/debit card. The amount may take up to 30 days to reflect in your card statement, depending upon the issuing bank.
+                            </br></br>
+                            You can request to transfer TRACKINGMAPS wallet credits back to the debit/credit card or bank account within 180 days/6 months of the order date.
+                            </br></br>
+                            e) I made a transaction via cash on delivery. How can I receive a refund?
+                            If you paid by cash/card on delivery, we will issue a refund to your TRACKINGMAPS store credits. you can either place new order or transfer the credits to your bank account. For more details you can contact us at 920013711
+                           
+                            </br> </br>
+                       
+                        </h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        <footer class="footer-links font-arabic">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-lg-4 mb-4">
+                        <h3 class="fw-bold" data-lang-ar="خرائط التتبع" data-lang-en="TRACKING MAPS">خرائط التتبع</h3>
+                        <h6 class="pt-2" data-lang-ar="ابق على اطلاع بأحدث أخبار مركباتك وأسطولك" data-lang-en="Stay up-to-date on your vehicles and fleet">ابق على اطلاع بأحدث أخبار مركباتك وأسطولك</h6>
+                        <p class="pt-2" data-lang-ar="المملكة العربية السعودية، القصيم، بريدة" data-lang-en="Kingdom of Saudi Arabia, Qassim, Buraidah">المملكة العربية السعودية، القصيم، بريدة</p>
+                        <p class="font-english">support@trackingmaps.sa</p>
+                        <p class="mb-2 font-english">920013711</p>
+                    </div>
+                    
+                    <div class="col-6 col-md-2 mb-4">
+                        <h4 data-lang-ar="روابط سريعة" data-lang-en="QUICK LINKS">روابط سريعة</h4>
+                        <ul class="list-unstyled pt-2" style="cursor: pointer;">
+                            <li class="py-1" id="01" data-lang-ar="الرئيسية" data-lang-en="Home">الرئيسية</li>
+                            <li class="py-1" id="02" data-lang-ar="معلومات عنا" data-lang-en="About">معلومات عنا</li> <!-- aboutUs -->
+                            <li class="py-1" id="03" data-lang-ar="خدمات" data-lang-en="Services">خدمات</li>
+                            <li class="py-1" id="04" data-lang-ar="اتصل بنا" data-lang-en="Contact">اتصل بنا</li> <!-- contactUs -->
+                        </ul>
+                    </div>
+                    
+                    <div class="col-6 col-md-2 mb-4">
+                        <h4 data-lang-ar="فروعنا" data-lang-en="OUR BRANCHES">فروعنا</h4>
+                        <ul class="list-unstyled pt-2">
+                            <li class="py-1" data-lang-ar="القصيم" data-lang-en="Qassim">القصيم</li>
+                            <li class="py-1" data-lang-ar="جدة" data-lang-en="Jeddah">جدة</li> <!-- jeddah in arabic grandmother -->
+                            <li class="py-1" data-lang-ar="الرياض" data-lang-en="Riyadh">الرياض</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-6 col-md-2 mb-4 pl-3">
+                        <h4 data-lang-ar="دعم العملاء" data-lang-en="CUSTOMER SUPPORT">دعم العملاء</h4>
+                        <ul class="list-unstyled pt-2" style="cursor: pointer;">
+                            <li class="py-1" id="05" data-lang-ar="احصل على خدماتنا" data-lang-en="Get Our Services">احصل على خدماتنا</li>
+                            <li class="py-1" id="06" data-lang-ar="طريقة الاستخدام" data-lang-en="Suggested Use">طريقة الاستخدام</li>
+                            <li class="py-1" id="07" data-lang-ar="تواصل معنا" data-lang-en="Contact Us">تواصل معنا</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-6 col-md-2 mb-4 pl-4">
+                        <h4 data-lang-ar="تابعنا على" data-lang-en="FOLLOW US ON">تابعنا على</h4>
+                        <div class="social-media d-flex justify-content-start">
+                            <a href="https://www.facebook.com" class="text-light fs-2 me-3"><i class="fab fa-facebook"></i></a>
+                            <a href="https://www.instagram.com" class="text-light fs-2 me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.twitter.com" class="text-light fs-2 me-3"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.linkedin.com" class="text-light fs-2"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="my-4">
+            
+                <div class="d-flex justify-content-center footer-bottom font-english">
+                    <p class="mb-0 me-4">© Tracking Maps</p>
+                    <p class="mb-0" style="cursor: pointer;">
+                        <a class="text-light text-decoration-none pr-3" id="08" data-lang-ar="سياسة الخصوصية" data-lang-en="Privacy Policy">سياسة الخصوصية</a>
+                        <a class="text-light text-decoration-none pr-3" id="09" data-lang-ar="الشروط و الأحكام" data-lang-en="Terms and Conditions">الشروط و الأحكام</a>
+                        <a class="text-light text-decoration-none pr-3" id="10" data-lang-ar="سياسة الاسترجاع" data-lang-en="Return Policy">سياسة الاسترجاع</a>
+                    </p>
+                </div>
+            </div>
+        </footer>
+    
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="script.js"></script>
+    </div>
+</body>
+</html>

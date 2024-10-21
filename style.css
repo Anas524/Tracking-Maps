@@ -1,0 +1,368 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    cursor: default;
+}
+
+@font-face {
+    font-family: 'Khebrat Musamim';
+    src: url('fonts/18\ Khebrat\ Musamim\ Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.font-arabic {
+    font-family: 'Khebrat Musamim';
+}
+
+.font-english {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* Replace with your desired English font */
+}
+
+.main-content {
+    height: 100vh;
+    background: linear-gradient(to right top, #051937, #00506d, #1e8c91, #7dc8a4, #e9ffb9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding-top: 70px;
+    padding-bottom: 5vh;
+    z-index: 1;
+}
+
+@media (max-width: 576px) {
+    .main-content {
+        padding-top: 56px;
+    }
+}
+
+.navbar-brand img {
+    height: 60px;
+}
+
+#navbarContent{
+    font-weight: 600;
+}
+
+#navItem a {
+    color: black;
+}
+
+@media (max-width: 1100px) {
+    #navItem a {
+        padding-right: 5px;
+    }
+}
+
+#navItem a:hover {
+    color: gray;
+}
+
+.hover-effect {
+    color: gray;
+}
+
+.navbar-nav {
+    flex-wrap: wrap; 
+}
+
+#dropdownMenu {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#dropdownItem {
+    transition: background-color 0.3s ease;
+}
+
+#dropdownItem:hover {
+    background-color: wheat;
+}
+
+#dropdownItem:focus {
+    background-color: wheat;
+}
+
+.bottom-element-1 {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 2; 
+}
+
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+
+.close {
+    font-size: 1.5rem;
+    color: #000;
+}
+
+.custom-section {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 15px;
+    padding-top: 12vh;
+}
+
+.text-about {
+    background-color: #f8f9fa; 
+    padding: 20px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+#sec-03{
+    padding-top: 21vh;
+    padding-bottom: 12vh;
+}
+
+#sec-04{
+    padding-top: 12vh;
+    padding-bottom: 6vh;
+}
+
+#sec-05{
+    padding-top: 12vh;
+}
+
+#sec-06{
+    padding-top: 12vh;
+}
+
+#sec-07{
+    padding-top: 12vh;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding-bottom: 3vh; 
+    }
+    .custom-section {
+        margin-top: 3vh; 
+        text-align: center;
+    }
+    .custom-section .row {
+        flex-direction: column; 
+    }
+}
+
+.custom-section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.custom-section .d-flex {
+    margin-bottom: 20px;
+}
+
+.custom-section h4 {
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    margin-top: 5rem;
+}
+
+.social-icons a {
+    color: black;
+    font-size: 24px;
+    margin: 0 30px;
+    transition: color 0.3s ease;
+    padding: 10px;
+}
+
+.social-icons a:hover {
+    color: #007bff;
+}
+
+.text-dec {
+    padding-top: 20px;
+}
+
+.text-dec h4 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.text-dec p {
+    font-size: 1.25rem; 
+    font-weight: 400;
+}
+
+.custom-section i {
+    margin-right: 15px;
+}
+
+.service-title {
+    cursor: pointer;
+}
+
+.service-title:hover {
+    color: gray;
+}
+
+.cmb {
+    margin-bottom: 40px;
+}
+
+.map-container {
+    position: relative;
+    width: 70%;
+    height: 500px;
+    margin-top: 20px;
+    z-index: 1;
+}
+
+#map {
+    width: 90%;
+    height: 85%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.tracking-panel {
+    background-color: #f8f9fa; /* Light background for tracking panel */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for a smoother look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+#boltText {
+    font-weight:800;
+}
+
+.map-view {
+    border-radius: 8px; /* Rounded corners for the map */
+    overflow: hidden; /* Prevents overflow from map */
+}
+
+
+.tracking-panel h4 {
+    margin-top: 20px;
+}
+
+.footer-links {
+    background-color: #000;
+    color: #f8f9fa;
+    padding: 2rem 1rem;
+    width: 100%;
+}
+
+.footer-links h3 {
+    font-size: 25px;
+}
+
+.footer-links h4 {
+    font-size: 20px;
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-start;
+}
+
+.footer-links .social-media a {
+    color: #f8f9fa;
+    font-size: 1.5rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+.footer-links .social-media a:hover {
+    transform: scale(1.1);
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.2);
+    margin: 1rem 0;
+    width: 120%;
+    align-self: center;
+}
+
+.footer-bottom {
+    opacity: 0.5;
+}
+
+@media (max-width: 576px) {
+    .footer-links .social-media {
+        justify-content: center;
+    }
+
+    .footer-links h3, .footer-links h4 {
+        font-size: 1.2rem;
+    }
+
+    .footer-links p {
+        font-size: 0.9rem;
+    }
+}
+
+.pp-panel {
+    background-color: #f8f9fa; /* Light background for tracking panel */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners for a smoother look */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.pp-panel p {
+    font-family: sans-serif;
+    font-weight: 600;
+    font-style: oblique;
+}
+
+.pp-customsection {
+    display: none;
+    padding: 0 15px;
+    padding-bottom: 6vh;
+    margin-top: 10vh;
+}
+
+.pp-customsection span {
+    font-size: 1.5rem;
+}
+
+.pp-customsection br {
+    font-size: 5rem;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 3rem;
+    cursor: pointer;
+    color: black;
+    z-index: 10;
+}
+
+.close-btn:hover {
+    color: red;
+}
